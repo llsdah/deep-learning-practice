@@ -32,7 +32,7 @@ def get_dataloaders(datasets, **config):
     dataloaders = {}
     for split in datasets.keys():
         dataloaders[split] = torch.utils.data.DataLoader(
-            datasets[split], 
+            datasets[split], shuffle=(split=='train'),
             **config    
         )
         print(f'{split:<10}: {len(dataloaders[split]):,} batches')
@@ -55,3 +55,13 @@ def get_train_results(history, plot=True):
 def eveluate_model(model, dataloader):
     results = model.evaluate(dataloader, return_dict=True)
     return pd.Series(results)
+
+
+
+def get_datasets(folder, transform=None):    
+    datasets = {}
+    for sub in folder.iterdir():
+        split = sub.stem
+        datasets[split] = CatDogDataset(sub, transform=transform)
+        print(f'{split:<10}: {len(datasets[split]):,} samples')
+    return datasets
