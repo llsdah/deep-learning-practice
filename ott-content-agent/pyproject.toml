@@ -1,0 +1,19 @@
+[project]
+name = "media-agent-backend"
+version = "0.1.0"
+description = "Minimal skeleton for learning an AI Agent backend"
+requires-python = ">=3.14,<3.15"
+dependencies = [
+    "fastapi==0.141.1",
+    "uvicorn[standard]==0.52.4",
+
+    # OpenAI Response API를 호출하기 위한 공식 Python SDK 
+    "openai",
+]
+
+[build-system]
+requires = ["setuptools>=80"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+include = ["app*"]
