@@ -1,4 +1,4 @@
-from brain.autograd import Value
+from brain.autograd.value import Value
 
 a = Value(2.0)
 b = Value(3.0)

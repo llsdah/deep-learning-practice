@@ -31,14 +31,14 @@ for epoch in range(100):
     total_gradient += gradient
 
 
-# 평균 gradient
-total_gradient /= len (x_data)
+  # 평균 gradient: 매 epoch마다 계산하고 가중치를 갱신해야 한다.
+  total_gradient /= len(x_data)
 
-# weight update
-w = w - learning_rate * total_gradient
+  # weight update
+  w = w - learning_rate * total_gradient
 
-if epoch % 100 == 0:
-  print (
+  if epoch % 20 == 0:
+    print (
       "epoch = ",epoch,
       "loss = ",total_loss,
       "gradient = ",total_gradient,
